@@ -1,0 +1,27 @@
+<!-- begin::Category Widget -->
+<div class="card my-4">
+  <h5 class="card-header"><i class="fa fa-star-o" aria-hidden="true"></i> Categories</h5>
+  <div class="card-body">
+    <ul class="list-unstyled">
+      <li>
+        {% if category_name %}
+          <a href="{% url 'blog:post_list_view' %}">All</a>
+        {% else %} 
+          All
+        {% endif %}
+      </li>
+
+    {% for category in category_list %}
+      {% comment %}No link if selected category.{% endcomment %}
+      <li>
+      {% if category_name == category.name %}
+        {{ category.name }}
+      {% else %}
+        <a href="{% url 'blog:post_list_category' category.name %}">{{ category.name }}</a> 
+      {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+<!-- end::Category Widget -->

@@ -1,0 +1,45 @@
+{% extends 'myapp/base.html' %}
+
+{% block page_title %}Tools | Random DNA{% endblock %}
+{% block nav-item-tools %}active{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+  <!-- begin::Breadcrumb -->
+  <nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'myapp:home' %}">Home</a></li>
+      <li class="breadcrumb-item">Tools</li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <a href="{% url 'biotools:randomdna' %}">Random DNA</a>
+      </li>
+    </ol>
+  </nav>
+  <!-- end::Breadcrumb -->
+
+  <div class="row">
+    <div class="col-12">
+      <h1>Tools - Random DNA</h1>
+
+      {% if results %}
+        <!-- begin::Results -->
+        <h3>Results</h3>
+        {% autoescape off %}
+        <p>{{ results }}</p>
+        {% endautoescape %}
+        <!-- end::Results -->
+      {% else %}
+        <!-- begin::Form -->
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Generate</button>
+        </form>
+        <!-- end::Form -->
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

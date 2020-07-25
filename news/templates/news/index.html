@@ -1,0 +1,49 @@
+{% extends 'myapp/base.html' %}
+
+{% block page_title %}News{% endblock %}
+{% block nav-item-news %}active{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>News</h1>
+      <!-- begin::Source links -->
+      {% for s in sources %}
+        {% if s.0 == source %}
+          {{ s.1 }}
+        {% else %}
+          <a href="{% url 'news:index' s.0 %}">{{ s.1 }}</a>
+         {% endif %}
+        |
+      {% endfor %}
+      <br><br>
+      <!-- end::Source links -->
+
+      {% if newsapi.status == 'ok' %}
+      <div class="card-columns">
+        {% for article in newsapi.articles %}
+        <!-- begin::Article -->
+        <div class="card">
+          <img src="{{ article.urlToImage }}" class="card-img-top" alt="{{ article.title|slugify }}">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="{{ article.url }}" target="_blank">
+              {{ article.title }}
+              </a>
+            </h5>
+            <p class="card-text">{{ article.description }}.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">{{ article.publishedAt }}</small>
+          </div>
+        </div>
+        <!-- end::Article -->
+        {% endfor %}
+      </div>
+      {% endif %}
+           
+    </div>
+  </div>
+</div>
+{% endblock %}

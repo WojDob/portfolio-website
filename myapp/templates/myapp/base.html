@@ -1,0 +1,94 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <title>Myproject | {% block page_title %}{% endblock %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- begin::My styles -->
+    <link rel="stylesheet" href="{% static 'myapp/css/carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/sticky-footer-navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+    <!-- end::My styles -->
+  </head>
+  <body>
+    <!-- begin::Header -->
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'myapp:home' %}">
+          <img src="{% static 'myapp/img/fa-home.svg' %}" height="30px">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item {% block nav-item-home %}{% endblock %}">
+                <a class="nav-link" href="{% url 'myapp:home' %}">Home 
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item {% block nav-item-about %}{% endblock %}">
+                <a class="nav-link" href="{% url 'myapp:about' %}">About</a>
+              </li>
+              <li class="nav-item {% block nav-item-news %}{% endblock %}">
+                <a class="nav-link" href="{% url 'news:home' %}">News</a>
+              </li>
+              <li class="nav-item {% block nav-item-blog %}{% endblock %}">
+                <a class="nav-link" href="{% url 'blog:post_list_view' %}">Blog</a>
+              </li>
+              <!-- begin::Tools -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% block nav-item-tools %}{% endblock %}" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tools</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                  <a class="dropdown-item" href="{% url 'biotools:seqcontent' %}">SeqContent</a>
+                  <a class="dropdown-item" href="{% url 'biotools:revcomp' %}">RevComp</a>
+                  <a class="dropdown-item" href="{% url 'biotools:randomdna' %}">Random DNA</a>
+                </div>
+              </li>
+              <!-- end::Tools -->
+              <li class="nav-item {% block nav-item-contact %}{% endblock %}">
+                <a class="nav-link" href="{% url 'myapp:contact' %}">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- end::Header -->
+
+    <!-- begin::Main -->
+    <main role="main">
+      <!-- begin::Page Content -->
+      {% block content %}
+      {% endblock content %}
+      <!-- end::Page Content -->
+      <!-- begin::Footer -->
+      <footer class="footer">
+        <div class="container">
+          <span class="float-right">
+          <a href="#">Back to top</a>
+          </span>
+          <span>© 2019 Company, Inc. · 
+          <a href="#">Facebook</a> · 
+          <a href="#">Twitter</a>
+          </span>
+        </div>
+      </footer>
+      <!-- end::Footer -->
+    </main>
+    <!-- end::Main -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+    <script src="{% static 'blog/js/showdown_init.js' %}"></script>
+  </body>
+</html>

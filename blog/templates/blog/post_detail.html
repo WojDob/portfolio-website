@@ -1,0 +1,39 @@
+{% extends 'myapp/base.html' %}
+
+{% block page_title %}Blog Post{% endblock %}
+{% block nav-item-blog %}active{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <!-- Begin:: Column 1 - Post entry -->
+    <div class="col-lg-9">
+      <h1>{{object.title}}</h1>
+      <p class="lead">
+        by
+        <a href="#">andrzej</a>
+      </p>
+      <hr>
+      <!-- Begin:: Date/Time -->
+      <p>
+        <i class="fa fa-clock-o" aria-hidden="true"></i> Published on {{ object.date_publish }} ({{ object.date_publish|timesince }} ago).<br>
+        <i class="fa fa-star-o" aria-hidden="true"></i> Category: <a href="{% url 'blog:post_list_category' object.id %}">{{ object.category.name }}</a>
+      </p>
+      <!-- End:: Date/Time -->
+      <hr>
+      <!-- Preview Image 
+      <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+      <hr>-->
+      <!-- Begin: Post body -->
+      <div class="markdown2html">{{ object.body }}</div>
+      <!-- End:: Post body -->
+      <hr>
+    </div>
+    <!-- End:: Column 1 - Blog entries -->
+    <!-- Begin:: Column 2 - Sidebar -->
+    <div class="col-lg-3">
+      {% include 'blog/includes/category_widget.html' with category_name=category_name category_list=category_list %}
+    </div>
+    <!-- End:: Column 2 -->
+</div>
+{% endblock %}

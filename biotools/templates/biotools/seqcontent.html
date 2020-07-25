@@ -1,0 +1,61 @@
+{% extends 'myapp/base.html' %}
+
+{% block page_title %}Tools | SeqContent{% endblock %}
+{% block nav-item-tools %}active{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+  <!-- begin::Breadcrumb -->
+  <nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'myapp:home' %}">Home</a></li>
+      <li class="breadcrumb-item">Tools</li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <a href="{% url 'biotools:seqcontent' %}">Sequence Content</a>
+      </li>
+    </ol>
+  </nav>
+  <!-- end::Breadcrumb -->
+
+  <div class="row">
+    <div class="col-12">
+      <h1>Tools - SeqContent</h1>
+
+      {% if results %}
+        <!-- begin::Results -->
+        <h3>Results</h3>
+        <p>Sequence length: {{ sequence_length }} characters.</p>
+        <table class="table table-hover table-sm">
+          <thead>
+            <tr>
+              <th>Word</th>
+              <th>Count</th>
+              <th>Percent</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for key, value in results.items %}
+             <tr>
+              <td>{{ key }}</td>
+              <td>{{ value.0 }}</td>
+              <td>{{ value.1|floatformat:1 }}
+             </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <!-- end::Results -->
+      {% else %}
+        <!-- begin::Form -->
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+        <!-- end::Form -->
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

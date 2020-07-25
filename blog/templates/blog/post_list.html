@@ -1,0 +1,57 @@
+{% extends 'myapp/base.html' %}
+
+{% block page_title %}Blog{% endblock %}
+{% block nav-item-blog %}active{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-9">
+            <h1>Blog
+         <small>latest posts</small>
+      </h1>
+
+      <!-- Begin:: Alert - showing posts -->
+      <div class="alert alert-info" role="alert">
+        Showing <strong>{{ object_list|length }}</strong> post{{ object_list|pluralize }}{% if category_name %} from <strong>{{ category_name }}</strong>{% else %}.{% endif %}
+      </div>
+      <!-- end:: Alert -->
+
+
+      {% if object_list %}
+        {% for obj in object_list %}
+          <!-- Begin:: Post -->
+          <div class="card mb-4">
+            <!--<img class="card-img-top" src="http://placehold.it/750x150" alt="Card image cap">-->
+            <div class="card-body">
+              <h2 class="card-title">{{ obj.title|title }}</h2>
+              <p class="card-text markdown2html">{{ obj.body|truncatewords_html:50 }}</p>
+              <a href="{% url 'blog:post_detail_view' obj.id %}" class="btn btn-sm btn-primary">Read More →</a>
+            </div>
+            <div class="card-footer text-muted">
+              <div class="row">
+                <div class="col-6">
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>
+                  Published: {{ obj.date_create|timesince }} ago
+                </div>
+                <div class="col-6" style="text-align:right;">
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                  Category: {{ obj.category.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End:: Post -->
+        {% endfor %}
+      {% else %}
+        <div class="alert alert-primary" role="alert">No posts to show.</div>
+      {% endif %}
+    </div>
+    <!-- Begin:: Sidebar -->
+    <div class="col-3">
+      {% include 'blog/includes/category_widget.html' with category_name=category_name category_list=category_list %}
+    </div>
+    <!-- end:: Sidebar -->
+  </div>
+</div>
+{% endblock %}
