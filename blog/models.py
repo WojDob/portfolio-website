@@ -21,5 +21,8 @@ class Post(models.Model):
     date_update = models.DateTimeField(auto_now=True)
     public = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ['date_publish']
+    
     def __str__(self):
         return self.title
