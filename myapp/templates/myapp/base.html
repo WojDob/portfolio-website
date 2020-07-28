@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Myproject | {% block page_title %}{% endblock %}</title>
+    <title>WojDob | {% block page_title %}{% endblock %}</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,9 +31,6 @@
                 <a class="nav-link" href="{% url 'myapp:home' %}">Home 
                   <span class="sr-only">(current)</span>
                 </a>
-              </li>
-              <li class="nav-item {% block nav-item-about %}{% endblock %}">
-                <a class="nav-link" href="{% url 'myapp:about' %}">About</a>
               </li>
               <li class="nav-item {% block nav-item-news %}{% endblock %}">
                 <a class="nav-link" href="{% url 'news:home' %}">News</a>

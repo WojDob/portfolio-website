@@ -6,8 +6,16 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
+
 }
 
+.center-text{
+  text-align: center;
+    padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
