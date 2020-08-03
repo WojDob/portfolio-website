@@ -57,3 +57,6 @@ def about_view(request):
       'mytech': mytech
     }
     return render(request, 'myapp/about.html', context)
+
+def abstract_view(request):
+    return render(request, 'myapp/abstract.html')

@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <title>Abstract</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- begin::My styles -->
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+    <!-- end::My styles -->
+
+  </head>
+  <body>
+  	<h1 class = "abstract-header">Identification of protein domains consisting of repeated dipeptide motifs.</h1>
+  	<div class = "abstract-body">
+    	<p>
+		The aim of the study is to develop a method, based on an analysis of amino acid composition of the proteome of Arabidopsis thaliana, enabling identification of proteins, which exhibit significant overrepresentation of dipeptide motifs.
+		</p>
+
+		<p>
+		The identification of protein domains is one of the key elements of protein annotation. Amino acid sequences of some protein domains consist of multiple repeats of two amino acids. An example of that can be recently discovered WG/GW domains, crucial to binding Argonaute proteins in the process of RNA interference. Given their lack of a tertiary structure and a low degree of sequence similarity (<b><30%</b>), WG/GW domains are very difficult to identify, because standard methods of protein domain annotation are based on quantitative protein similarity. WG/GW repeats are probably one of many repeats of pairs of amino acids that build functional protein domains. Undoubtedly there exists an array of these types of repeats containing other amino acids, that function in many cellular processes.
+		</p>
+
+		<p>
+		I identified <b>967</b> Arabidopsis thaliana proteins which exhibit significant (<b>p < 10^-4</b>) overrepresentation of dipeptide motifs. Some proteins (33%) exhibit overrepresentation of more than one motif - a total of <b>2337</b> occurences of overrepresentation of dipeptides were found in those proteins. Out of 210 possible combinations of two aminoacids, 205 exhibit at least one overrepresentation. The developed method also identified all four WG/GW proteins with experimentally confirmed function of binding Argonaute proteins. For 524 overrepresentations in A.thaliana at least one orthologous protein exhibits overrepresentation of the same dipeptide motif, which can indicate the evolutionary and functional conservation of analysed motifs.
+		</p>
+	</div>
+  </body>
+</html>

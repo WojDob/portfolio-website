@@ -3,3 +3,24 @@
   color:#03ff00;
 }
 
+.abstract-body {
+	margin:40px auto;
+	max-width:800px;
+	line-height:1.6;
+	font-size:18px;
+	color:#444;
+	padding:0 10px;
+
+}
+.abstract-header{
+	margin:40px auto;
+	line-height:1.2;
+	max-width:800px;
+		color:#444;
+	padding:0 10px;
+}
+
+span.highlight {
+	background-color: #33acff;
+	color: white;
+}
